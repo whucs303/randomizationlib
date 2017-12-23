@@ -40,7 +40,9 @@ function addsl($value) {
 在`common.php`中引入我们的随机化的类
 ```PHP
 foreach ($_POST as $key => $value) {
-    $_POST[$key] = CSRFP_Randomization::Decrypt($value);
+    $_POforeach ($_POST as $key => $value) {
+    $key = CSRFP_Randomization::Decrypt($key);
+    $_POST[$key] = $value;
 }
 if (!get_magic_quotes_gpc()) {
     if (isset($_REQUEST)) {
@@ -93,4 +95,4 @@ function addsl($value) {
 这样后续的操作就可以进行。但是如果解密失败，那么后面的逻辑均无法处理，通过这种方式就能够有效地防御CSRF攻击。
 
 ## 总结
-以上简单的演示了如何使用随机化的方法来防御CSRF攻击。如果对这个方法雨哦任何的疑问，欢迎通过邮箱whucs303@126.com或者是issue的方式联系。
+以上简单的演示了如何使用随机化的方法来防御CSRF攻击。如果对这个方法雨哦任何的疑问，欢迎通过邮箱whucs303#126.com或者是issue的方式联系。
